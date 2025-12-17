@@ -14,11 +14,12 @@ int main()
     char charactor[50];
     char alphabet = 'A';
     int index = 0;
+    int startIndex = 0;
 
     for(char alphabet = 'A'; alphabet <= 'Z'; alphabet++)
     {
 
-        // スタックの処理を作る
+        // キューの処理を作る
         charactor[index] = alphabet;
 
 
@@ -26,7 +27,7 @@ int main()
         cout << "追加する文字   ";
         cout << alphabet << endl;
         cout << "追加後の配列" << endl;
-        for (int i = 0; i <= index;i++)
+        for (int i = startIndex; i <= index;i++)
         {
             cout << charactor[i];
             cout << ", ";
@@ -36,22 +37,25 @@ int main()
         bool doTakeAlphabet = rand() % 2 == 1;
         if(doTakeAlphabet == true)
         {
+            char *currentValue = nullptr;
+            
             // 取り出す処理
             cout << "取り出す文字   ";
-            cout << charactor[index] << endl;
-            charactor[index] = NULL;
+            cout << charactor[startIndex] << endl;
+            charactor[startIndex] = 0;
+
             cout << "取り出した後の配列" << endl;
-            for (int i = 0; i <= index;i++)
+            for (int i = startIndex + 1; i <= index;i++)
             {
                 cout << charactor[i];
                 cout << ", ";
             }
             cout << endl;
+            startIndex++;
         }
-        else
-        {
-            index++;
-        }
+        
+        index++;
+        
     }
 
 
